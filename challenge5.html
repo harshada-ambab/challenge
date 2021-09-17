@@ -1,0 +1,109 @@
+<!-- Perform the above CHALLENGE 3 witch change as
+
+Inside the main function
+use await function for call `CreatePerson` functions. -->
+<!-- CHALLENGE 3: (Perform this challenge in parts)
+fullName function - which will return combination of firstName, lastName.
+
+Create a `createPerson` function will accept parameters firstName, lastName, mobileNumber.
+The function should return Promise.
+Promise will have the functionality to add the `Person` object to the `users` array.
+The Promise should return Person fullName for success.
+The Promise should fail if a mobile number already exists in the `users` 
+array to another person object.
+
+Create a `main` function.
+Inside the main function
+Call the `CreatePerson` function 10 times with different parameter 
+(firstName, lastName, mobileNumber) and display fullName or Error.
+
+Execute the main function. -->
+
+<script>
+     
+    // console.log(fullName("Harshada","kadam"))
+    
+    var users =[];
+    class Person {
+        constructor(firstName, lastName, mobileNumber) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.mobileNumber = mobileNumber;
+        }
+    
+        fullName = (firstName ,lastName) => {
+            return console.log(firstName + " " + lastName)
+         }
+    }
+    function createPerson(firstName,lastName,mobileNumber){
+       
+        return new Promise((resolve,reject) => {
+        setTimeout(function(){
+            if (users.find(number=>number.mobileNumber===mobileNumber)) {
+                reject("Mobile Number Already Exists")
+                
+            }         
+            else{
+                obj = new Person(firstName, lastName, mobileNumber)
+                let person={firstName: obj.firstName,
+                        lastName: obj.lastName,
+                        mobileNumber: obj.mobileNumber
+                        }
+                users.push(person);
+                resolve(obj.fullName(firstName, lastName));
+            }
+        }, 2000);
+    });
+    }
+    
+    let main=async()=>{
+        await createPerson("harshada","kadam","4546656565")
+        try {
+             await createPerson("Akshay","more","1235658745")
+        }
+        catch(error)
+        {
+            console.log(error)
+        }
+        try{
+             await createPerson("smita","nagavkar","6578412289")
+        }
+        catch(error){
+            console.log(error)
+        }
+        try{
+             await createPerson("rutuja","patil","6558889545")
+        }
+        catch(error){
+            console.log(error)
+        }
+        try {
+             await createPerson("swati","gaikwad","9895656412")
+        }
+        catch(error){
+            console.log(error)
+        }
+        try {
+            return await createPerson("mansi","chavan","9895656412")
+        }
+        catch(error){
+            console.log(error)
+        }
+        try{
+            return await createPerson("sakshi","sakpal","5856782345")
+        }
+        catch(error){
+            console.log(error)
+        }
+        try {
+            return await createPerson("deepali","mohite","5856782345")
+        }
+        catch(error){
+            console.log(error)
+        }
+        
+    
+    }
+    main();
+    
+    </script>

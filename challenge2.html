@@ -1,0 +1,18 @@
+<!-- CHALLENGE 2:
+Create a function `sum` that will sum all arguments passed to it.
+The quantity of the arguments is unknown.
+print `sum` result. -->
+
+<script>
+    function sum()
+    {
+        var sum=0;
+        for(var i=0;i<arguments.length;i++)
+        {
+            sum=sum+arguments[i];
+        }
+        return sum;
+    }
+
+    console.log(sum(5,5));
+</script>
